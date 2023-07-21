@@ -1,14 +1,11 @@
 const http = require("http");
+const { connectQueue } = require("./connectQueue");
 
-const port = process.env.PORT || 5000;
+const port = 5002;
 
-const requestListener = function (req, res) {
-    res.writeHead(200);
-    res.end("My first server!");
-};
+connectQueue();
 
-
-const server = http.createServer(requestListener);
+const server = http.createServer();
 
 server.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

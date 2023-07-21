@@ -17,10 +17,10 @@ const getBody = async request => {
 
 const requestListener = async function (req, res) {
     if (req.method === "POST") {
-        const body = await getBody(req)
+        const body = await getBody(req);
+        console.log(`get ${body} from user`);
+        await sendData(body);
     }
-    console.log(`get ${body} from user`);
-    await sendData(body);
     res.writeHead(200);
     res.end("My first server!");
 };
