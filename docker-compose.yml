@@ -1,7 +1,28 @@
 version: "3.8"
 services:
   rabbitmq:
+    container_name: rabbitmq
     image: rabbitmq:3.12-alpine
+  m1:
+    container_name: m1
+    build:
+      context: ./m1
+      dockerfile: ./Dockerfile
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./m1:/app
+      - /app/node_modules
     ports:
-      - "5672:5672"
+      - "${PORT:-5000}:5000"
+  m2:
+    container_name: m2
+    build:
+      context: ./m2
+      dockerfile: ./Dockerfile
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./m2:/app
+      - /app/node_modules
   

@@ -8,5 +8,5 @@ connectQueue();
 const server = http.createServer();
 
 server.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`[LOG M2] Server M2 is running`);
 });
